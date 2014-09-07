@@ -1,0 +1,15 @@
+---
+
+- host: all
+  roles:
+  - role: osxc.packages
+    brew_taps:
+    - caskroom/fonts
+    brew_packages:
+    - tree
+    cask_packages:
+    - font-inconsolata
+    - font-source-code-pro
+    - textmate
+    - google-chrome
+

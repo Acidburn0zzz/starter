@@ -1,4 +1,5 @@
 ---
 # Your run is described here
+#- include: brew.yml
 - include: install.yml
-- include: configuration.yml
+#- include: configuration.yml
