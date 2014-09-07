@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: False
   roles:
   - role: finder_prefs
     # first tab

@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: True
   roles:
   - role: git_config
     git_user_mail: ninja@ninjabong.com

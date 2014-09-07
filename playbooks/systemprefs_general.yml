@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: False
   roles:
   - role: systemprefs_general
     system_appearance: graphite

@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  gather_facts: False
   roles:
   - role: datetime
     time_zone: America/New_York
