@@ -1,7 +1,7 @@
-starter
+ninjabong's starter
 =======
 
-An osxc playbook, ready to be forked !
+my osxc playbook, already forked !
 
 
 > **Warning:** This version of osxc is not compatible with the old one (called now legacy), you'll have to copy some old roles locally in order to make a smooth transition. On the other side, you can still use legacy and we will continue to accept your pull requests on legacy.
@@ -21,7 +21,7 @@ You can reach our (temporarily not updated and old) [website](http://osxc.github
 1. Be sure to have the XCode Command-Line tools installed: `xcode-select --install`
 2. [Fork this repo](https://github.com/osxc/starter/fork)
 3. Clone your forked repo anywhere you want on your machine: `git clone git@github.com:<myname>/starter.git; mv starter osxc; cd osxc`
-4. Setup your system with `sudo easy_install pip; sudo pip install ansible`
+4. Manually install Ansible 1.8 with ``git clone https://github.com/ansible/ansible.git ~/src/ansible; cd ~/src/ansible; sudo make install``
 5. Start osxc with `ansible-galaxy install -r requirements.yml && ansible-playbook desktop.yml`
 
 At the end, you'll only need to repeat step 5.
