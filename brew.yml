@@ -1,6 +1,6 @@
 ---
 
-- host: all
+- hosts: all
   roles:
   - role: osxc.packages
     brew_taps:
