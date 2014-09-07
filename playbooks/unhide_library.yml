@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+  - role: unhide_library

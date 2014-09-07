@@ -1,0 +1,29 @@
+---
+
+- name: set computer datetime options
+  sudo: True
+  command: "/usr/sbin/systemsetup -{{ item.pref }} {{ item.val }}"
+  with_items:
+    - { pref: "settimezone"          , val: "{{ time_zone }}" }
+    - { pref: "setusingnetworktime"  , val: "{{ use_networktime }}" }
+    - { pref: "setnetworktimeserver" , val: "{{ networktime_server }}" }
+
+- name: menubar clock settings - format
+  command: "{{ defaults_write_menuclock }} DateFormat -string '{{ date_format }}'"
+  when: date_format is defined
+
+- name: menubar clock settings - flash separators on
+  command: "{{ defaults_write_menuclock }} FlashDateSeparators -bool true"
+  when: flash_separator is defined and flash_separator == true
+
+- name: menubar clock settings - flash separators off
+  command: "{{ defaults_write_menuclock }} FlashDateSeparators -bool no"
+  when: flash_separator is defined and flash_separator == false
+
+- name: menubar clock settings - analog clock on
+  command: "{{ defaults_write_menuclock }} IsAnalog -bool true"
+  when: analog_clock is defined and analog_clock == true
+
+- name: menubar clock settings - analog clock off
+  command: "{{ defaults_write_menuclock }} IsAnalog -bool no"
+  when: analog_clock is defined and analog_clock == false

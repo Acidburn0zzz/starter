@@ -1,0 +1,4 @@
+---
+
+- name: unhide ~/Library
+  command: "/usr/bin/chflags nohidden ~/Library"

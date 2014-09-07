@@ -1,0 +1,8 @@
+---
+# tasks/url_img.yml
+
+- name: "download {{ desktop_img_path }}"
+  get_url: "url={{ desktop_img_path }} dest={{ local_img_path }}"
+
+- name: run set_desktops.py to set desktop image
+  command: "{{ desktops_exec }} --path {{ local_img_path }}"

@@ -1,0 +1,17 @@
+---
+# tasks/main.yml
+
+- name: check if set_desktops.py exists
+  stat: "path={{ desktops_exec }}"
+  register: script_exists
+
+- name: download set_desktops.py and install in /usr/local/bin
+  sudo: True
+  get_url: "url={{ script_url }} dest={{ desktops_exec }} owner=root group=wheel mode=0755"
+  when: script_exists.stat.exists == false
+
+- include: "local_img.yml"
+  when: "desktop_img_path|search('^http') == false"
+
+- include: "url_img.yml"
+  when: "desktop_img_path|search('^http') == true"

@@ -1,0 +1,2 @@
+---
+defaults_global_write: /usr/bin/defaults write NSGlobalDomain

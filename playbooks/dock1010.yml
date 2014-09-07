@@ -1,0 +1,15 @@
+---
+- hosts: all
+  roles:
+  - role: dock1010
+    apps:
+    - "/Applications/System Preferences.app"
+    - /Applications/Utilities/Terminal.app
+    - /Applications/TextMate.app
+    - "/Applications/Google Chrome.app"
+    folders:
+    - path: ~/src/github.com
+      view: grid
+    - path: ~/Downloads
+      sort: datemodified
+      view: grid

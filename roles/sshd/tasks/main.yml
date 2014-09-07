@@ -1,0 +1,5 @@
+---
+
+- name: "turning sshd {{ sshd }}"
+  sudo: True
+  command: "/usr/sbin/systemsetup -f setremotelogin {{ sshd }}"

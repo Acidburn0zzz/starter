@@ -1,0 +1,154 @@
+---
+# Finder's Preferences, normally set via cmd-; in Finder
+# playbook use:
+#  - role: finder_prefs
+# - First tab
+#    show_internal: [on|off]
+#    show_external: [on|off]
+#    show_removeable: [on|off]
+#    show_servers: [on|off]
+#    new_window: [machine|bootdisk|home|desktop|documents|allfiles|custom*]
+#    new_window_path: "path relative to /" *only needed when new_window = custom
+#    always_new: [on|off]
+#    spring_loaded_folders: [on|off]
+#    spring_loaded_delay: [0.0-1.0] (seconds)
+# - Third tab
+#    sidebar: [on|off]
+#    sidebar_width: []##]
+#    sidebar_devices: [on|off]
+#    sidebar_favorites: [on|off]
+#    sidebar_shared: [on|off]
+#    sidebar_tags: [on|off]
+# - Fourth tabs
+#    show_extensions: [on|off]
+#    extension_warning: [on|off]
+#    trash_warning: [on|off]
+#    trash_securely: [on|off]
+#    search_default: [mac|current|previous]
+
+
+# before we do anything, backup existing Finder preferences
+- name: back up existing Finder prefs
+  copy: src={{ finder_plist }} dest=~/Library/Preferences/com.apple.finder.osxc_backup.plist mode=0600 backup=yes
+
+# First tab - General "GNRL"
+- name: set bunch of Finder Prefs
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  with_items:
+# Show these items on the desktop:
+    - { pref: 'ShowHardDrivesOnDesktop -bool {{ show_internal }}' }
+    - { pref: 'ShowExternalHardDrivesOnDesktop -bool {{ show_external }}' }
+    - { pref: 'ShowRemovableMediaOnDesktop -bool {{ show_removeable }}' }
+    - { pref: 'ShowMountedServersOnDesktop -bool {{ show_servers }}' }
+# Spring-loaded folders
+    - { pref: 'com.apple.springing.enabled -bool {{ spring_loaded_folders }}' }
+    - { pref: 'com.apple.springing.delay -float {{ spring_loaded_delay }}' }
+# Finder Sidebar options
+    - { pref: 'ShowSidebar -bool {{ sidebar }}' }
+    - { pref: 'SidebarWidth -int {{ sidebar_width }}' }
+    - { pref: 'SidebarDevicesSectionDisclosedState -bool {{ sidebar_devices }}' }
+    - { pref: 'SidebarPlacesSectionDisclosedState -bool {{ sidebar_favorites }}' }
+    - { pref: 'SidebarSharedSectionDisclosedState -bool {{ sidebar_shared }}' }
+# Finder extensions and trash options
+    - { pref: 'AppleShowAllExtensions -bool {{ show_extensions }}' }
+    - { pref: 'FXEnableExtensionChangeWarning -bool {{ extension_warning }}' }
+    - { pref: 'WarnOnEmptyTrash -bool {{ trash_warning }}' }
+    - { pref: 'EmptyTrashSecurely -bool {{ trash_securely }}' }
+
+# New Finder windows show:
+- name: set default Finder window to {{ ansible_nodename }}
+  command: "{{ defaults_finder_write }} NewWindowTarget -string PfCm"
+  when: new_window == "machine"
+
+- name: set default Finder window path to {{ ansible_nodename }}
+  command: "{{ defaults_finder_del }} NewWindowTargetPath"
+  when: new_window == "machine"
+
+- name: set default Finder window and path to /
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "bootdisk"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfVo' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}' }
+
+- name: set default Finder window and path to ~/
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "home"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfHm' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}/Users/{{ ansible_env.USER}}/' }
+
+- name: set default Finder window and path to ~/Desktop
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "desktop"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfDe' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}/Users/{{ ansible_env.USER}}/Desktop/' }
+
+- name: set default Finder window and path to ~/Documents
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "documents"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfDo' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}/Users/{{ ansible_env.USER}}/Documents/' }
+
+- name: set default Finder window to All Files
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "allfiles"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfAf' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}/System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch' }
+
+- name: set default Finder window to Other
+  command: "{{ defaults_finder_write }} {{ item.pref }}"
+  when: new_window == "custom"
+  with_items:
+    - { pref: 'NewWindowTarget -string PfLo' }
+    - { pref: 'NewWindowTargetPath -string {{ base_path }}/{{ new_window_path }}/' }
+
+# Always opens folders in a new window (10.8)
+- name: set Always opens folders in a new window to {{ always_new }}
+  command: "{{ defaults_finder_write }} FinderSpawnWindow -bool {{ always_new }}"
+  when: "ansible_distribution_version | search('10.8')"
+
+# Open folders in tabs instead of new window (10.9)
+- name: set Open folders in tabs instead of new windows to {{ always_new }}
+  command: "{{ defaults_finder_write }} FinderSpawnTab -bool {{ always_new }}"
+  when: "ansible_distribution_version | search('10.9')"
+
+
+# Second tab - Labels "LBLS" in 10.8.x / "TAGS" in 10.9.x
+# its complex enough to warrant its own seperate role
+# see http://rdr.to/0tZ
+
+
+# Third tab - Sidebar "SDBR"
+# moved above to - name: set bunch of Finder Prefs
+
+# Tags are 10.9 only
+- name: setting Recent Tags in Sidebar to {{ sidebar_tags }}
+  command: "{{ defaults_finder_write }} ShowRecentTags -bool {{ sidebar_tags }}"
+  when: "ansible_distribution_version | search('10.9')"
+
+# Fourth tab - Advanced "ADVD"
+# moved above to - name: set bunch of Finder Prefs
+
+# When performing a search:
+# absent by default, auto uses SCev until set to SCcf of SCsp, then sets SCev if/when chosen later
+- name: set "When performing a search" to "Search This Mac"
+  command: "{{ defaults_finder_write }} FXDefaultSearchScope -string SCev"
+  when: search_default == "mac"
+
+- name: set "When performing a search" to "Search the Current Folder"
+  command: "{{ defaults_finder_write }} FXDefaultSearchScope -string SCcf"
+  when: search_default == "current"
+
+- name: set "When performing a search" to "Use the Previous Search Scope"
+  command: "{{ defaults_finder_write }} FXDefaultSearchScope -string SCsp"
+  when: search_default == "previous"
+
+
+# changes made, now let's make them active
+- name: killing and restarting Finder
+  command: "/usr/bin/killall Finder > /dev/null 2>&1"
+ 

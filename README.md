@@ -1,7 +1,9 @@
-ninjabong's starter
-=======
+hi!
+===
 
-my osxc playbook, already forked !
+![ninjabong](ninjastar.jpg "ninjabong")
+
+my osxc playbook, already forked ! (and in-progress porting from legacy-osxc)
 
 
 > **Warning:** This version of osxc is not compatible with the old one (called now legacy), you'll have to copy some old roles locally in order to make a smooth transition. On the other side, you can still use legacy and we will continue to accept your pull requests on legacy.

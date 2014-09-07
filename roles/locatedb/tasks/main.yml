@@ -1,0 +1,5 @@
+---
+
+- name: turning locatedb on
+  sudo: True
+  command: "/bin/launchctl {{ locatedb }} -w /System/Library/LaunchDaemons/com.apple.locate.plist"

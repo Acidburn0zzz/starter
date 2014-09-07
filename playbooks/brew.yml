@@ -5,11 +5,21 @@
   - role: osxc.packages
     brew_taps:
     - caskroom/fonts
+# keepin it lean for now
     brew_packages:
-    - tree
+#    - ddrescue
+    - figlet
+#    - htop
+#    - irssi
+#    - ncat
+#    - silc-client
+#    - mtr
+#    - nmap
+	- tree
+#    - wget
+    - whatmask
     cask_packages:
     - font-inconsolata
     - font-source-code-pro
     - textmate
     - google-chrome
-

@@ -1,0 +1,5 @@
+---
+- hosts: all
+  roles:
+  - role: datetime
+    time_zone: America/New_York

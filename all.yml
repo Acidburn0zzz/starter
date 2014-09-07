@@ -1,0 +1,26 @@
+---
+# include the includeable thingies
+# sets the computer's name
+- include: playbooks/computername.yml
+# sets the timezone, ntp server and menubar clock options
+- include: playbooks/datetime.yml
+# sets desktop picture from local or remote http(s) url
+- include: playbooks/desktop_image.yml
+# enable gatekeeper
+- include: playbooks/gatekeeper.yml
+# enable locatedb
+- include: playbooks/locatedb.yml
+# enable sshd
+- include: playbooks/sshd.yml
+# unhide ~/Library in Finder
+- include: playbooks/unhide_library.yml
+# sets the User's account image
+- include: playbooks/user_image.yml
+# sets some Finder preferences
+- include: playbooks/finder_prefs.yml
+# sets some System Preferences: General preferences
+- include: playbooks/systemprefs_general.yml
+# install some brew and cask cli things
+- include: playbooks/brew.yml
+# dock last since we're using brew's cask to install some things
+- include: playbooks/dock1010.yml

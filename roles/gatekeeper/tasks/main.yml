@@ -1,0 +1,5 @@
+---
+
+- name: "{{ gatekeeper }} gatekeeper"
+  sudo: True
+  command: "/usr/sbin/spctl --master-{{ gatekeeper }}"
