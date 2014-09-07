@@ -15,7 +15,7 @@
 #    - silc-client
 #    - mtr
 #    - nmap
-	- tree
+    - tree
 #    - wget
     - whatmask
     cask_packages:
