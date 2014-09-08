@@ -3,7 +3,7 @@
 - hosts: all
   gather_facts: False
   roles:
-  - role: osxc.packages
+  - role: packages
     brew_taps:
     - caskroom/fonts
 # keepin it lean for now
@@ -19,6 +19,8 @@
     - tree
 #    - wget
     - whatmask
+    brew_package: curl
+    brew_opts: with-ssl
     cask_packages:
     - font-inconsolata
     - font-source-code-pro
