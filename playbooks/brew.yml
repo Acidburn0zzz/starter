@@ -20,7 +20,7 @@
 #    - wget
     - whatmask
     brew_package: curl
-    brew_opts: with-ssl
+    brew_opts: with-idn.with-openssl
     cask_packages:
     - font-inconsolata
     - font-source-code-pro
