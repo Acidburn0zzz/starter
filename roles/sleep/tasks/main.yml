@@ -1,0 +1,42 @@
+---
+
+- name: set various sleep options on mains power
+  sudo: True
+  command: /usr/sbin/systemsetup {{ item.pref }}
+  with_items:
+# Idle time before Computer, Display and Hard Drive sleep
+    - { pref: 'setsleep {{ system_sleep }}' }
+# Idle time until computer sleeps
+    - { pref: 'setcomputersleep {{ comp_sleep }}' }
+# Idle time until hard disk sleeps
+    - { pref: 'setharddisksleep {{ disk_sleep }}' }
+# Idle time until display sleeps 
+    - { pref: 'setdisplaysleep {{ display_sleep }}' }
+# Allow power button to sleep the computer
+    - { pref: 'setallowpowerbuttontosleepcomputer {{ button_sleep }}' }
+# Should we listen for WoL
+    - { pref: 'setwakeonnetworkaccess {{ wake_on_lan }}' }
+
+# test if we're actually a laptop by the presence of "Book" in ansible_model (Model Identifier)
+- name: set various sleep options on battery power
+  sudo: True
+  ignore_errors: True
+  command: /usr/bin/pmset -b {{ item.pmset }}
+  with_items:
+# display sleep timer; (value in minutes, or 0 to disable)
+    - { pmset: 'displaysleep {{ display_sleep_batt }}' }
+# disk spindown timer; (value in minutes, or 0 to disable)
+    - { pmset: 'disksleep {{ disk_sleep_batt }}' }
+# system sleep timer (value in minutes, or 0 to disable)
+    - { pmset: 'sleep {{ system_sleep_batt }}' }
+# wake on ethernet magic packet (value = 0/1)
+    - { pmset: 'womp {{ wake_on_lan_batt }}' }
+# wake the machine when the laptop lid (or clamshell) is opened (value = 0/1)
+    - { pmset: 'lidwake {{ wake_on_lid }}' }
+# wake the machine when power source (AC/battery) is changed (value = 0/1)
+    - { pmset: 'acwake {{ wake_on_ac }}' }
+# slightly turn down display brightness when switching to this power source (value = 0/1)
+    - { pmset: 'lessbright {{ lower_brightness }}' }
+# disable caching filevault key in RAM during sleep (value = 0/1)
+    - { pmset: 'destroyfvkeyonstandby {{ destroy_fv_key }}' }
+  when: "ansible_model | search('Book')"
