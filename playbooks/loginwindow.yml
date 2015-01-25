@@ -1,0 +1,6 @@
+----
+- hosts: all
+  gather_facts: False
+  roles:
+  - role: loginwindow
+    loginwindow_txt: Custom Login Window Text Goes Here

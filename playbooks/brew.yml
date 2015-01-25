@@ -19,8 +19,10 @@
     - tree
 #    - wget
     - whatmask
-    brew_package: curl
-    brew_opts: with-idn.with-openssl
+    brew_pkg_with_opts:
+    - { pkg: "curl" , opts: "with-idn,with-openssl" }
+#    brew_package: curl
+#    brew_opts: with-idn.with-openssl
     cask_packages:
     - font-inconsolata
     - font-source-code-pro
