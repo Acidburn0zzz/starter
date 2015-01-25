@@ -1,6 +1,6 @@
 ---
 
-- name: customize login window text
+- name: customize loginwindow text
   sudo: True
   command: "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText 'My Login Window Text Goes Here'"
 
