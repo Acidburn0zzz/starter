@@ -1,0 +1,9 @@
+---
+
+- name: customize login window text
+  sudo: True
+  command: "/usr/bin/defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText 'My Login Window Text Goes Here'"
+
+- name: touch some EFI files to synchronize Full Disk Encryption(FDE) loginwindow 
+  sudo: True
+  command: "/usr/bin/touch /System/Library/PrivateFrameworks/EFILogin.framework/Resources/EFIResourceBuilder.bundle/Contents/Resources"
