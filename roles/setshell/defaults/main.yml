@@ -1,0 +1,3 @@
+---
+#setshell/defaults/main.yml
+shell_path: /bin/zsh

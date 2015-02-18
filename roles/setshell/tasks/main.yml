@@ -1,0 +1,47 @@
+---
+#setshell/tasks/main.yml
+
+- name: set login shell for Terminal.app
+  command: "/usr/bin/defaults write ~/Library/Preferences/com.apple.Terminal Shell {{ shell_path }}"
+
+- name: check for iTerm2 prefs in dotfiles
+  stat: path=dotfiles/iterm2.plist
+  register: iterm2_prefs
+
+- name: copy iTerm2 prefs from dotfiles if they exist
+  copy: "src=dotfiles/iterm2.plist dest=~/Library/Preferences/com.googlecode.iterm2.plist owner={{ ansible.user }} mode=0600 backup=yes"
+  when: iterm2_prefs.stat.exists == True
+
+- name: "ensure {{ shell_path }} exists in /etc/shells"
+  sudo: True
+  lineinfile: "dest=/etc/shells line={{ shell_path }}"
+  when: shell_path | search('^/bin')
+
+
+
+# This no workie, maybe PlistBuddy but enh, dotfiles is more useful
+#####
+# needs to write a dict, inside the 'New Bookmarks' array
+#- name: set login shell for iTerm2.app
+#  command: "/usr/bin/defaults write ~/Library/Preferences/com.googlecode.iterm2 'New Bookmarks' -dict-add 'Command' '/usr/local/bin/zsh' 'Custom Command' 'YES'
+##  command: "/usr/bin/defaults write ~/Library/Preferences/com.googlecode.iterm2 { item.key} { item.type } { item.value}"
+##  with_items:
+##    - { "Command", -string, "/usr/local/bin/zsh" }
+##    - { "Custom Command", -bool, YES }
+
+
+
+# These are far, Far, FAR more dangerous as they manipulate Directory Services directly
+#####
+#
+#- name: dscl change shell to zsh for 10.8/9
+#  sudo: True
+#  command: "/usr/bin/dscl localhost -change /Local/Default/Users/{{ ansible.user }} shell /bin/bash /bin/zsh"
+#  when: "ansible_distribution_version | search('10.[8|9]')"
+
+#- name: dscl change shell to zsh for 10.10
+#  sudo: True
+#  command: "/usr/bin/dscl localhost -change /Local/Default/Users/{{ ansible.user }} UserShell /bin/bash /bin/zsh"
+#  when: ansible_distribution_version == "10.10"
+
+
