@@ -3,7 +3,7 @@
 - hosts: all
   gather_facts: False
   roles:
-  - role: packages
+  - role: osxc.packages
     brew_taps:
     - caskroom/fonts
 # keepin it lean for now
