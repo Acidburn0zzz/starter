@@ -8,23 +8,29 @@
     - caskroom/fonts
 # keepin it lean for now
     brew_packages:
-#    - ddrescue
+    - ddrescue
     - figlet
-#    - htop
-#    - irssi
-#    - ncat
-#    - silc-client
-#    - mtr
-#    - nmap
+    - htop
+    - httpie
+    - irssi
+    - mackup
+    - minicom
+    - mtr
+    - ncat
+    - nmap
+    - silc-client
     - tree
-#    - wget
+    - wget
     - whatmask
     brew_pkg_with_opts:
-    - { pkg: "curl" , opts: "with-idn,with-openssl" }
+#    - { pkg: "curl" , opts: "with-idn,with-openssl" }
 #    brew_package: curl
 #    brew_opts: with-idn.with-openssl
     cask_packages:
+    - box-sync
+    - dash
     - font-inconsolata
     - font-source-code-pro
-    - textmate
     - google-chrome
+    - textmate
+
