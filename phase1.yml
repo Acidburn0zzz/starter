@@ -24,7 +24,3 @@
 - include: playbooks/systemprefs_general.yml
 # copy dotfiles into ~/
 - include: playbooks/dotfiles.yml
-# install some brew and cask cli things
-- include: playbooks/brew.yml
-# dock last since we're using brew's cask to install some things
-- include: playbooks/dock.yml

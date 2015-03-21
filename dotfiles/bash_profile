@@ -1,0 +1,20 @@
+PATH="$PATH:~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:~/bin:/System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Support:/Developer/Tools:/usr/local/munki"
+export PATH
+export VISUAL=nano
+export PS1="\[\033[00;34m\]|\[\033[01;34m\][\[\033[00;37m\]\u\[\033[01;30m\]@\[\033[00;37m\]\h\[\033[01;30m\]:\[\033[01;37m\]\w💀 \[\033[01;34m\]]\[\033[00;34m\]|\[\033[00m\]"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+function crc32 { cksum -o3 "$@"|ruby -e 'STDIN.each{|a|a=a.split;printf  "%08X\t%s\n",a[0],a[2..-1].join(" ")}'; }
+
+alias ipext='curl -s http://checkip.dyndns.org/ | grep -o [0-9][0-9]*.[0-9][0-9]*.[0-9][0-9]*.[0-9]*'
+alias ls="ls -G"
+alias grep="grep --color"
+alias tree="tree -C"
+
+pidof () { ps -Ac | egrep -i $@ | awk '{print $1}'; }
+snarf () { pico -w url && wget -i url && rm -f url && exit; }
+
+# Make Bash append rather than overwrite the history on disk:
+shopt -s histappend
+# Whenever displaying the prompt, write the previous line to disk:
+PROMPT_COMMAND='history -a'
