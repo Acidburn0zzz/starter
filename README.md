@@ -30,3 +30,17 @@ I've been working on trying to document full options with example playbook use f
 ----------
 
 -   **ninjastar.jpg** is both for this [README.md](README.md) and [user_image role](https://github.com/ninjabong/starter/tree/master/roles/user_image/).
+
+----------
+```bash
+note to self:
+	xcode-select --install
+	sudo easy_install pip
+	sudo pip install ansible
+	git clone https://github.com/ninjabong/starter.git ~/src/github.com/ninjabong/starter
+	cd ~/src/github.com/ninjabong/starter
+	ansible-galaxy install -r requirements.yml
+	ansible-playbook phase1.yml -K
+	(new shell)
+	ansible-playbook phase2.yml
+```
