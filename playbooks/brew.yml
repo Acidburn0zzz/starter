@@ -1,7 +1,6 @@
 ---
 
 - hosts: all
-  gather_facts: False
   roles:
   - role: osxc.packages
     brew_taps:
@@ -16,7 +15,7 @@
     - mackup
     - minicom
     - mtr
-    - ncat
+    - netcat
     - nmap
     - silc-client
     - tree

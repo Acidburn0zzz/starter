@@ -2,7 +2,7 @@ PATH="$PATH:~/bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/opt/local/sbin:
 export PATH
 export VISUAL=nano
 export PS1="\[\033[00;34m\]|\[\033[01;34m\][\[\033[00;37m\]\u\[\033[01;30m\]@\[\033[00;37m\]\h\[\033[01;30m\]:\[\033[01;37m\]\w💀 \[\033[01;34m\]]\[\033[00;34m\]|\[\033[00m\]"
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+#export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 function crc32 { cksum -o3 "$@"|ruby -e 'STDIN.each{|a|a=a.split;printf  "%08X\t%s\n",a[0],a[2..-1].join(" ")}'; }
 
