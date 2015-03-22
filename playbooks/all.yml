@@ -1,7 +1,7 @@
 ---
 # include the includeable thingies
-# sets some ~/.git_config options
-- include: playbooks/git_config.yml
+# gather facts seperately from the individual playbooks, which have it disabled
+- include: playbooks/gather_facts.yml
 # sets the computer's name
 - include: playbooks/computername.yml
 # sets the timezone, ntp server and menubar clock options
@@ -22,8 +22,15 @@
 - include: playbooks/finder_prefs.yml
 # sets some System Preferences: General preferences
 - include: playbooks/systemprefs_general.yml
+# sets some ~/.git_config options
+- include: playbooks/git_config.yml
+# sets some ~/.mackup.cfg options
+- include: playbooks/mackup_cfg.yml
 # copy dotfiles into ~/
 - include: playbooks/dotfiles.yml
+#
+# this is where we open a new shell
+#
 # install some brew and cask cli things
 - include: playbooks/brew.yml
 # dock last since we're using brew's cask to install some things
