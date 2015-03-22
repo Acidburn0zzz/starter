@@ -4,33 +4,55 @@
   gather_facts: False
   roles:
   - role: osxc.packages
-    brew_taps:
-    - caskroom/fonts
 # keepin it lean for now
     brew_packages:
-    - ddrescue
+#    - ddrescue
     - figlet
-    - htop
+#    - htop
     - httpie
-    - irssi
+#    - irssi
     - mackup
-    - minicom
+#    - minicom
     - mtr
     - netcat
     - nmap
-    - silc-client
+#    - silc-client
     - tree
     - wget
     - whatmask
-    brew_pkg_with_opts:
+#    brew_pkg_with_opts:
 #    - { pkg: "curl" , opts: "with-idn,with-openssl" }
 #    brew_package: curl
 #    brew_opts: with-idn.with-openssl
+    brew_taps:
+    - caskroom/fonts
     cask_packages:
+#    - arduino
     - box-sync
-    - dash
-    - font-inconsolata
-    - font-source-code-pro
+#    - caffeine
+#    - dash
+#    - firefox
+#    - fission
+#    - flux
+#    - font-inconsolata
+#    - font-source-code-pro
+#    - geektool
     - google-chrome
+#    - handbrake
+#    - istat-menus
+#    - mumble
+#    - openemu
+#    - osxfuse
+#    - sshfs
+#    - macfusion
+#    - totalspaces
+#    - totalterminal
+#    - transmit
+#    - panic-unison
     - textmate
-
+#    - vagrant
+#    - vagrant-manager
+#    - vlc
+#    - wavtap
+#    - wireshark
+#    - zterm
