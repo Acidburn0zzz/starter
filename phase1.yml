@@ -1,7 +1,5 @@
 ---
 # include the includeable thingies
-# sets some ~/.git_config options
-- include: playbooks/git_config.yml
 # sets the computer's name
 - include: playbooks/computername.yml
 # sets the timezone, ntp server and menubar clock options
@@ -22,5 +20,9 @@
 - include: playbooks/finder_prefs.yml
 # sets some System Preferences: General preferences
 - include: playbooks/systemprefs_general.yml
+# sets some ~/.git_config options
+- include: playbooks/git_config.yml
+# sets some ~/.mackup.cfg options
+- include: playbooks/mackup_cfg.yml
 # copy dotfiles into ~/
 - include: playbooks/dotfiles.yml

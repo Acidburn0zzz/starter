@@ -3,7 +3,6 @@
   gather_facts: False
   tasks:
   - copy: src=../dotfiles/bash_profile dest=/Users/{{ ansible_user_id }}/.bash_profile backup=yes
-  - copy: src=../dotfiles/mackup.cfg dest=/Users/{{ ansible_user_id }}/.mackup.cfg backup=yes
 
 - hosts: all
   gather_facts: False
