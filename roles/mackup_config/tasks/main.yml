@@ -6,9 +6,9 @@
   ini_file: dest=~/.mackup.cfg follow=yes mode=0600 backup=yes
             section= {{ list.sect }} option={{ list.opt|default(omit) }} value={{ list.val }}
   with_items:
-      - { sect = storage , opt = engine , val = {{ sync_engine }} }
-      - { sect = applications_to_sync , val = {{ app_sync_list }} }
-      - { sect = applications_to_ignore , val = {{ app_ignore_list }} }
+      - "{ sect = storage , opt = engine , val = {{ sync_engine }} }"
+      - "{ sect = applications_to_sync , val = {{ app_sync_list }} }"
+      - "{ sect = applications_to_ignore , val = {{ app_ignore_list }} }"
 
 - name: set the path when engine is file_system
   ini_file: dest=~/.mackup.cfg follow=yes mode=0600 backup=yes

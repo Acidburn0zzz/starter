@@ -1,5 +1,7 @@
 ---
 # mackup_config/defaults/main.yml
-sync_engine = dropbox
-directory_name = Mackup
+sync_engine: dropbox
+directory_name: Mackup
+app_sync_list:
+app_ignore_list:
 
