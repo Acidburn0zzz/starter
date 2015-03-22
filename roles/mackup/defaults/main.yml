@@ -1,0 +1,10 @@
+---
+# mackup/defaults/main.yml
+sync_engine = dropbox
+sync_dir = Mackup
+#mackup_action = restore
+#directory_name = Mackup
+#app_sync_list =
+#app_ignore_list =
+
+

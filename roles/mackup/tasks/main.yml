@@ -1,0 +1,46 @@
+---
+# mackup/tasks/main.yml
+
+#    engine    -   cask name
+# dropbox      - dropbox
+# google_drive - google-drive
+# copy         - copy
+# box          - box-sync
+
+# brew install mackup
+- role: osxc.packages
+  brew_packages:
+    - mackup
+
+# brew cask install the sync engine's .app
+- role: osxc.packages
+  cask_packages:
+    - dropbox
+  when: sync_engine == dropbox
+
+- role: osxc.packages
+  cask_packages:
+    - google-drive
+  when: sync_engine == google_drive
+
+- role: osxc.packages
+  cask_packages:
+    - copy
+  when: sync_engine == copy
+
+- role: osxc.packages
+  cask_packages:
+    - box-sync
+  when: sync_engine == box
+
+# launch sync client to config so prefs exist and sync starts
+
+# handle ~/.mackup.cfg
+- role: mackup_config
+  sync_engine: {{ sync_engine }}
+  directory_name: {{ sync_dir }}
+
+# backup / restore
+- name: run mackup (action)
+  command: /usr/local/bin/mackup {{ mackup_action }}
+

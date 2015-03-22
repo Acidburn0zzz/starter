@@ -2,7 +2,6 @@
 - hosts: all
   gather_facts: False
   roles:
-  - role: mackup_config
+  - role: mackup
     sync_engine: box
-    directory_name: mackup
-
+    sync_dir: mackup
