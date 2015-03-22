@@ -1,6 +1,8 @@
 ---
 # we run this seperately in a new terminal so ~/.common_env is sourced
 
+# gather facts seperately from the individual playbooks, which have it disabled
+- include: playbooks/gather_facts.yml
 # install some brew and cask cli things
 - include: playbooks/brew.yml
 # dock last since we're using brew's cask to install some things

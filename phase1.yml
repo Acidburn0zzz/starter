@@ -1,5 +1,7 @@
 ---
 # include the includeable thingies
+# gather facts seperately from the individual playbooks, which have it disabled
+- include: playbooks/gather_facts.yml
 # sets the computer's name
 - include: playbooks/computername.yml
 # sets the timezone, ntp server and menubar clock options

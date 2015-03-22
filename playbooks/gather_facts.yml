@@ -1,0 +1,4 @@
+---
+# this seemly gathers "facts" as the individual playbooks have that disabled
+- hosts: all
+  gather_facts: True
