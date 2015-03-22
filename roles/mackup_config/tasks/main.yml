@@ -15,7 +15,7 @@
             section='{{ item.sect }}' option='{{ item.opt|default(omit) }}' value='{{ item.val }}'
   with_items:
       - { sect: storage , opt: engine , val: '{{ sync_engine }}' }
-      - { sect: storage , opt: directory , val: '{{ directory_name }}' }
+      - { sect: storage , opt: directory , val: '{{ sync_dir }}' }
       - { sect: applications_to_sync    , val: '{{ app_sync_list }}' }
       - { sect: applications_to_ignore  , val: '{{ app_ignore_list }}' }
 

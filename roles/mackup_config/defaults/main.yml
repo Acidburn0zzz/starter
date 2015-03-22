@@ -1,5 +1,5 @@
 ---
 # mackup_config/defaults/main.yml
 sync_engine: dropbox
-directory_name: Mackup
+sync_dir: Mackup
 
