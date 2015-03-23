@@ -24,7 +24,5 @@
 - include: playbooks/systemprefs_general.yml
 # sets some ~/.git_config options
 - include: playbooks/git_config.yml
-# sets some ~/.mackup.cfg options
-- include: playbooks/mackup.yml
 # copy dotfiles into ~/
 - include: playbooks/dotfiles.yml

@@ -38,6 +38,7 @@
 #  directory_name: "{{ sync_dir }}"
 
 # backup / restore
-- name: run mackup (action)
-  command: "/usr/local/bin/mackup {{ mackup_action }}"
-
+#- name: run mackup (action)
+#  command: "/usr/local/bin/mackup {{ mackup_action }}"
+- name: notify mackup is ready
+  debug: 'msg="mackup is installed, configured, and ready to run!"'
