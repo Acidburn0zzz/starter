@@ -9,26 +9,25 @@
 
 # brew install mackup
 # meta dependency
+#- name: brew install mackup
+#  homebrew: name=mackup state=latest
 
 # brew cask install the sync engine's .app
-- name: brew install mackup
-  homebrew: name=mackup state=latest
-
 - name: brew cask install dropbox
   homebrew_cask: name=dropbox
-  when: sync_engine == dropbox
+  when: sync_engine == "dropbox"
 
 - name: brew cask install google-drive
   homebrew_cask: name=google-drive
-  when: sync_engine == google_drive
+  when: sync_engine == "google_drive"
 
 - name: brew cask install copy
   homebrew_cask: name=copy
-  when: sync_engine == copy
+  when: sync_engine == "copy"
 
 - name: brew cask install box-sync
   homebrew_cask: name=box-sync
-  when: sync_engine == box
+  when: sync_engine == "box"
 
 # launch sync client to config so prefs exist and sync starts
 
