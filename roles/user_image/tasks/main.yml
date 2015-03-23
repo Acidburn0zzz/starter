@@ -33,3 +33,8 @@
 - name: "Opening Users & Group System Pref"
   command: /usr/bin/open /System/Library/PreferencePanes/Accounts.prefpane
   when: image_present.stat.exists == True
+
+- name: touch some EFI files to synchronize Full Disk Encryption(FDE) loginwindow 
+  sudo: True
+  command: "/usr/bin/touch /System/Library/PrivateFrameworks/EFILogin.framework/Resources/EFIResourceBuilder.bundle/Contents/Resources"
+
