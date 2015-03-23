@@ -1,28 +1,8 @@
 ---
 #mackup/meta/main.yml
-
 dependencies:
   - role: osxc.packages
     brew_packages: 
     - mackup
   - role: mackup_config
-
-
-#---
-#dependencies:
-#  - role: git_package
-#  remote_repo: github.com/kcrawford/dockutil
-#  local_repo: ~/src/github.com/kcrawford/dockutil
-
-#dependencies:
-#- roles:
-#  role: osxc.packages
-#  brew_packages:
-#  - mackup
-#    cask_packages:
-#        - {{ sync_engine | default(dropbox) }}
-#
-#  - role: mackup_config
-#    sync_engine: dropbox
-#    directory_name: mackup
 

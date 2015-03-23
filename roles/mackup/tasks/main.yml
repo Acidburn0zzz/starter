@@ -1,17 +1,6 @@
 ---
 # mackup/tasks/main.yml
 
-#    engine    -   cask name
-# dropbox      - dropbox
-# google_drive - google-drive
-# copy         - copy
-# box          - box-sync
-
-# brew install mackup
-# meta dependency
-#- name: brew install mackup
-#  homebrew: name=mackup state=latest
-
 # brew cask install the sync engine's .app
 - name: brew cask install dropbox
   homebrew_cask: name=dropbox
@@ -29,13 +18,7 @@
   homebrew_cask: name=box-sync
   when: sync_engine == "box"
 
-# launch sync client to config so prefs exist and sync starts
-
-# handle ~/.mackup.cfg
-# meta dependency
-#- role: mackup_config
-#  sync_engine: "{{ sync_engine }}"
-#  directory_name: "{{ sync_dir }}"
+# launch sync client to config so prefs exist and sync starts ?
 
 # backup / restore
 #- name: run mackup (action)
