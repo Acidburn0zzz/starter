@@ -24,8 +24,6 @@
 - include: playbooks/systemprefs_general.yml
 # sets some ~/.git_config options
 - include: playbooks/git_config.yml
-# sets some ~/.mackup.cfg options
-- include: playbooks/mackup_cfg.yml
 # copy dotfiles into ~/
 - include: playbooks/dotfiles.yml
 #
@@ -33,5 +31,7 @@
 #
 # install some brew and cask cli things
 - include: playbooks/brew.yml
+# sets some ~/.mackup.cfg options
+- include: playbooks/mackup.yml
 # dock last since we're using brew's cask to install some things
 - include: playbooks/dock.yml
