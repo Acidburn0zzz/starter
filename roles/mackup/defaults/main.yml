@@ -2,5 +2,4 @@
 # mackup/defaults/main.yml
 sync_engine: dropbox
 sync_dir: Mackup
-mackup_action: restore
 

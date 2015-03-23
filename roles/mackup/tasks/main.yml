@@ -4,7 +4,7 @@
 # brew cask install the sync engine's .app
 - name: brew cask install dropbox
   homebrew_cask: name=dropbox
-  when: sync_engine == "dropbox"
+  when: sync_engine is undefined or sync_engine == "dropbox"
 
 - name: brew cask install google-drive
   homebrew_cask: name=google-drive
@@ -18,10 +18,24 @@
   homebrew_cask: name=box-sync
   when: sync_engine == "box"
 
-# launch sync client to config so prefs exist and sync starts ?
+# launch sync client to config so prefs exist and sync starts
+- name: launch Dropbox.app
+  command: open /Applications/Dropbox.app
+  when: sync_engine == "dropbox"
 
-# backup / restore
-#- name: run mackup (action)
-#  command: "/usr/local/bin/mackup {{ mackup_action }}"
+- name: launch Google Drive.app
+  command: "open /Applications/Google Drive.app"
+  when: sync_engine == "google_drive"
+
+- name: launch Copy.app
+  command: open /Applications/Copy.app
+  when: sync_engine == "copy"
+
+- name: launch Box Sync.app
+  command: "open /Applications/Box Sync.app"
+  when: sync_engine == "box"
+
+# mackup [backup|restore|uninstall] ready once sync completes
 - name: notify mackup is ready
-  debug: 'msg="mackup is installed, configured, and ready to run!"'
+  debug: 'msg="mackup is installed, configured, and ready to run once your cloud sync completes!"'
+

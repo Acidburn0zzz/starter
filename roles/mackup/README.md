@@ -10,6 +10,5 @@ playbook use:
   - role: mackup
     sync_engine: [dropbox|google_drive|copy|box|file_system] # (defaults to dropbox)
     sync_dir: Mackup # (default)
-    mackup_action: [backup|restore|uninstall|list] # (default restore, list isn't very useful, but works)
 ```
 
