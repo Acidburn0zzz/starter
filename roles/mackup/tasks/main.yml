@@ -7,12 +7,9 @@
 # copy         - copy
 # box          - box-sync
 
-# brew install mackup
-- role: osxc.packages
-  brew_packages:
-    - mackup
-
 # brew cask install the sync engine's .app
+- osxc.packages: brew_packages=mackup
+
 - role: osxc.packages
   cask_packages:
     - dropbox
@@ -37,10 +34,10 @@
 
 # handle ~/.mackup.cfg
 - role: mackup_config
-  sync_engine: {{ sync_engine }}
-  directory_name: {{ sync_dir }}
+  sync_engine: "{{ sync_engine }}"
+  directory_name: "{{ sync_dir }}"
 
 # backup / restore
 - name: run mackup (action)
-  command: /usr/local/bin/mackup {{ mackup_action }}
+  command: "/usr/local/bin/mackup {{ mackup_action }}"
 

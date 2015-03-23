@@ -1,9 +1,9 @@
 ---
 #mackup/meta/main.yml
 dependencies:
-  - role: osxc.packages
-    brew_packages:
-        - mackup
+- osxc.packages
+#    brew_packages:
+#        - mackup
 #    cask_packages:
 #        - {{ sync_engine | default(dropbox) }}
 #
