@@ -9,17 +9,17 @@
 #    - ddrescue
     - figlet
 #    - htop
-    - httpie
+#    - httpie
 #    - irssi
-    - mackup
+#    - mackup
 #    - minicom
-    - mtr
-    - netcat
-    - nmap
+#    - mtr
+#    - netcat
+#    - nmap
 #    - silc-client
     - tree
     - wget
-    - whatmask
+#    - whatmask
 #    brew_pkg_with_opts:
 #    - { pkg: "curl" , opts: "with-idn,with-openssl" }
 #    brew_package: curl
