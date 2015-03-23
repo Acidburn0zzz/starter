@@ -36,6 +36,7 @@
 #    - flux
 #    - font-inconsolata
 #    - font-source-code-pro
+#    - fseventer
 #    - geektool
     - google-chrome
 #    - handbrake
@@ -45,11 +46,16 @@
 #    - osxfuse
 #    - sshfs
 #    - macfusion
+#    - macpar-deluxe
+#    - pacifist
+#    - sublime-text
+#    - suspicious-package
 #    - totalspaces
 #    - totalterminal
 #    - transmit
 #    - panic-unison
     - textmate
+#    - the-unarchiver
 #    - vagrant
 #    - vagrant-manager
 #    - vlc
