@@ -7,35 +7,36 @@
 # copy         - copy
 # box          - box-sync
 
-# brew cask install the sync engine's .app
-- osxc.packages: brew_packages=mackup
+# brew install mackup
+# meta dependency
 
-- role: osxc.packages
-  cask_packages:
-    - dropbox
+# brew cask install the sync engine's .app
+- name: brew install mackup
+  homebrew: name=mackup state=latest
+
+- name: brew cask install dropbox
+  homebrew_cask: name=dropbox
   when: sync_engine == dropbox
 
-- role: osxc.packages
-  cask_packages:
-    - google-drive
+- name: brew cask install google-drive
+  homebrew_cask: name=google-drive
   when: sync_engine == google_drive
 
-- role: osxc.packages
-  cask_packages:
-    - copy
+- name: brew cask install copy
+  homebrew_cask: name=copy
   when: sync_engine == copy
 
-- role: osxc.packages
-  cask_packages:
-    - box-sync
+- name: brew cask install box-sync
+  homebrew_cask: name=box-sync
   when: sync_engine == box
 
 # launch sync client to config so prefs exist and sync starts
 
 # handle ~/.mackup.cfg
-- role: mackup_config
-  sync_engine: "{{ sync_engine }}"
-  directory_name: "{{ sync_dir }}"
+# meta dependency
+#- role: mackup_config
+#  sync_engine: "{{ sync_engine }}"
+#  directory_name: "{{ sync_dir }}"
 
 # backup / restore
 - name: run mackup (action)
