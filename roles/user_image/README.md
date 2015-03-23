@@ -2,10 +2,10 @@ user_image
 =====
 sets the User's local account image
 
-note: this is broken under 10.10.2 8\(
 -----
 **requires:**
-\(none\)
+
+- 512x512 JPEG
 
 ```yaml
 playbook use:

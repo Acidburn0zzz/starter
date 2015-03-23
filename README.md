@@ -25,7 +25,7 @@ I've been working on trying to document full options with example playbook use f
 -   **sshd:** enable or disable sshd via systemsetup.
 -   **systemprefs\_general:** sets prefs normally done via System Preferences \- General.
 -   **unhide\_library:** unhides ~/Library in Finder.
--   **user\_image:** sets the User's local account image, note: broke in 10.10.2.
+-   **user\_image:** sets the User's local account image.
 
 ----------
 
