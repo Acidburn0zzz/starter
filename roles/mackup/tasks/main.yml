@@ -24,7 +24,7 @@
   when: sync_engine == "dropbox"
 
 - name: launch Google Drive.app
-  command: "open /Applications/Google\ Drive.app"
+  command: 'open "/Applications/Google Drive.app"'
   when: sync_engine == "google_drive"
 
 - name: launch Copy.app
@@ -32,7 +32,7 @@
   when: sync_engine == "copy"
 
 - name: launch Box Sync.app
-  command: "open /Applications/Box\ Sync.app"
+  command: 'open "/Applications/Box Sync.app"'
   when: sync_engine == "box"
 
 # mackup [backup|restore|uninstall] ready once sync completes
