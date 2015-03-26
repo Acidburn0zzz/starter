@@ -22,6 +22,8 @@
 - include: playbooks/finder_prefs.yml
 # sets some System Preferences: General preferences
 - include: playbooks/systemprefs_general.yml
+# set screencapture prefs
+- include: playbooks/screencapture.yml
 # sets some ~/.git_config options
 - include: playbooks/git_config.yml
 # copy dotfiles into ~/

@@ -1,0 +1,16 @@
+---
+# screencapture/tasks/main.yml
+
+- name: change the screencapture image type
+  command: "/usr/bin/defaults write com.apple.screencapture type -string {{ screencap_img_type }}"
+  when: screencap_img_type == 'png' or screencap_img_type == 'pdf' or screencap_img_type == 'jpg' or screencap_img_type == 'tif' or screencap_img_type == 'psd'
+
+- name: ensure location folder exists otherwise ~/Desktop will continue to be used
+  file: "dest={{ screencap_location }} state=directory"
+
+- name: change the screencapture location
+  command: "/usr/bin/defaults write com.apple.screencapture location -string {{ screencap_location }}"
+
+- name: restart SystemUIServer so changes take effect
+  command: /usr/bin/killall SystemUIServer
+

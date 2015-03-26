@@ -1,0 +1,5 @@
+---
+# screencapture/defaults/main.yml
+screencap_img_type: png
+screencap_location: ~/Desktop
+
