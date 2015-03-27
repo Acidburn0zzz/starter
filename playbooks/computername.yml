@@ -1,6 +1,12 @@
 ---
 - hosts: all
   gather_facts: False
+  vars_prompt:
+    - name: "prompted_name"
+      prompt: "Name of Machine?"
+      private: no
+      confirm: no
   roles:
   - role: computername
-    computername: VM
+    computername: "{{ prompted_name | default('osxc') }}"
+
